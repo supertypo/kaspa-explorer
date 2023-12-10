@@ -81,7 +81,7 @@ function App() {
         console.log("hier")
       })
     }
-    if (v.startsWith("kaspa:")) {
+    if (v.startsWith("kaspa:") || v.startsWith("kaspatest:")) {
       navigate(`/addresses/${v}`)
     }
 
@@ -94,7 +94,7 @@ function App() {
     })
       .then(response => response.json())
       .then(data => {
-        setPrice(data['current_price']['usd'].toFixed(4));
+        setPrice(data['current_price'] ? data['current_price']['usd'].toFixed(4) : 0);
         setMarketData(data);
       })
       .catch(r => console.log(r))

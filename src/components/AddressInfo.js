@@ -24,6 +24,9 @@ const AddressInfoPage = () => {
 
 const AddressInfo = () => {
     const { addr } = useParams();
+    const addrPrefix = addr.split(":")[0] + ':';
+    const addrHash = addr.split(":")[1];
+
     const ref = useRef(null);
 
     const [addressBalance, setAddressBalance] = useState()
@@ -269,7 +272,7 @@ const AddressInfo = () => {
                 <Col md={12} className="mt-sm-4">
 
                     <div className="addressinfo-header">Address</div>
-                    <div className="utxo-value-mono"><span class="addressinfo-color">kaspa:</span>{addr.substring(6, addr.length - 8)}<span class="addressinfo-color">{addr.substring(addr.length - 8)}</span>
+                    <div className="utxo-value-mono"><span class="addressinfo-color">{addrPrefix}</span>{addrHash.substring(0, addrHash.length - 8)}<span class="addressinfo-color">{addrHash.substring(addrHash.length - 8)}</span>
                         <CopyButton size="2rem" text={addr} />
                         <QrButton addr="{addr}" onClick={() => setShowQr(!showQr)} />
 
