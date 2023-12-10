@@ -50,7 +50,7 @@ function Dashboard() {
       })
     }
 
-    if (v.startsWith("kaspa:")) {
+    if (v.startsWith("kaspa:") || v.startsWith("kaspatest:")) {
       navigate(`/addresses/${v}`)
     }
 
