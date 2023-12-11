@@ -16,6 +16,28 @@ const MarketDataBox = () => {
         setCircCoinsMData(Math.round(parseFloat(coin_supply.circulatingSupply) / 100000000));
     }
 
+    const mcap = (() => {
+        if (!circCoinsMData || !price) {
+            return "N/A"
+        }
+        const mcap = (circCoinsMData * price).toFixed(0)
+        if (mcap / 1_000_000_000 > 10) {
+            return (mcap / 1_000_000_000).toFixed(1) + " B"
+        } else if (mcap / 1_000_000_000 > 1) {
+            return (mcap / 1_000_000_000).toFixed(2) + " B"
+        } else if (mcap / 1_000_000 > 10) {
+            return (mcap / 1_000_000).toFixed(1) + " M"
+        } else if (mcap / 1_000_000 > 1) {
+            return (mcap / 1_000_000).toFixed(2) + " M"
+        } else if (mcap / 1_000 > 10) {
+            return (mcap / 1_000).toFixed(1) + " K"
+        } else if (mcap / 1_000 > 1) {
+            return (mcap / 1_000).toFixed(2) + " K"
+        } else {
+            return mcap
+        }
+    })
+
     useEffect(() => {
         initBox();
     }, [])
@@ -67,7 +89,7 @@ const MarketDataBox = () => {
                 </tr>
                 <tr>
                     <td className="cardBoxElement">MCAP</td>
-                    <td className="pt-1">$ {(circCoinsMData * price / 1000000).toFixed(2) || 'N/A'} M <a href="https://www.coingecko.com/en/coins/kaspa" target="_blank" className="rank ms-1">Rank #{marketData?.market_cap_rank || 'N/A'}</a></td>
+                    <td className="pt-1">$ {(mcap()) || 'N/A'}<a href="https://www.coingecko.com/en/coins/kaspa" target="_blank" className="rank ms-1">Rank #{marketData?.market_cap_rank || 'N/A'}</a></td>
                 </tr>
             </table>
         </div>
