@@ -49,7 +49,7 @@ const socket = io("wss://api.kaspa.org", {
 });
 
 function App() {
-  const [price, setPrice] = useState("")
+  const [price, setPrice] = useState(0)
   const [marketData, setMarketData] = useState("")
 
   const [blocks, setBlocks] = useState([]);
