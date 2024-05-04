@@ -6,7 +6,16 @@ import { useParams } from "react-router";
 import { Link, useSearchParams } from "react-router-dom";
 import Toggle from "react-toggle";
 import usePrevious, { floatToStr, numberWithCommas } from "../helper";
-import { getAddressBalance, getAddressTxCount, getAddressUtxos, getBlock, getBlockdagInfo, getTransactions, getTransactionsFromAddress } from '../kaspa-api-client.js';
+import {
+    getAddressBalance,
+    getAddressName,
+    getAddressTxCount,
+    getAddressUtxos,
+    getBlock,
+    getBlockdagInfo,
+    getTransactions,
+    getTransactionsFromAddress
+} from '../kaspa-api-client.js';
 import { FaQrcode } from "react-icons/fa"
 import BlueScoreContext from "./BlueScoreContext";
 import CopyButton from "./CopyButton.js";
@@ -29,6 +38,7 @@ const AddressInfo = () => {
 
     const ref = useRef(null);
 
+    const [addressName, setAddressName] = useState()
     const [addressBalance, setAddressBalance] = useState()
     const { blueScore } = useContext(BlueScoreContext);
     const [search, setSearch] = useSearchParams();
@@ -138,6 +148,12 @@ const AddressInfo = () => {
         });
 
         qrCode.append(ref.current);
+
+        getAddressName(addr).then(
+            (res) => {
+                setAddressName(res)
+            }
+        )
 
         getAddressBalance(addr).then(
             (res) => {
@@ -271,11 +287,16 @@ const AddressInfo = () => {
             <Row>
                 <Col md={12} className="mt-sm-4">
 
-                    <div className="addressinfo-header">Address</div>
-                    <div className="utxo-value-mono"><span class="addressinfo-color">{addrPrefix}</span>{addrHash.substring(0, addrHash.length - 8)}<span class="addressinfo-color">{addrHash.substring(addrHash.length - 8)}</span>
+                    <div className="addressinfo-header">
+                        <span>Address</span>
+                        {addressName ? <span className="addressinfo-name ms-sm-3">{addressName}</span> : <span></span>}
+                    </div>
+                    <div className="utxo-value-mono">
+                        <span class="addressinfo-color">{addrPrefix}</span>
+                        <span>{addrHash.substring(0, addrHash.length - 8)}</span>
+                        <span class="addressinfo-color">{addrHash.substring(addrHash.length - 8)}</span>
                         <CopyButton size="2rem" text={addr} />
                         <QrButton addr="{addr}" onClick={() => setShowQr(!showQr)} />
-
                         <div className="qr-code" ref={ref} hidden={!showQr} />
                     </div>
                 </Col>

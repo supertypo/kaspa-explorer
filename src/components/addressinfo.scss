@@ -113,6 +113,14 @@
     transform: translateY(-10%);
 }
 
+.addressinfo-name {
+    color: black;
+    background-color: $color2;
+    padding: .1rem .4rem;
+    border-radius: .4rem;
+    display: inline-block;
+}
+
 .addressinfo-value {
     display: block;
     color: $color1;

@@ -37,6 +37,15 @@ export async function getCoinSupply() {
     return res
 }
 
+export async function getAddressName(addr) {
+    const res = await fetch(`${API_BASE}addresses/${addr}/name`, { headers: { 'Access-Control-Allow-Origin': '*' } })
+        .then((response) => response.json())
+        .then(data => {
+            return data?.name;
+        })
+    return res
+}
+
 export async function getAddressBalance(addr) {
     const res = await fetch(`${API_BASE}addresses/${addr}/balance`, { headers: { 'Access-Control-Allow-Origin': '*' } })
         .then((response) => response.json())
@@ -45,7 +54,6 @@ export async function getAddressBalance(addr) {
         })
     return res
 }
-
 
 export async function getAddressTxCount(addr) {
     const res = await fetch(`${API_BASE}addresses/${addr}/transactions-count`, { headers: { 'Access-Control-Allow-Origin': '*' } })
