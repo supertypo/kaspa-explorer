@@ -91,12 +91,8 @@ const BlockInfo = () => {
                 setIsBlueBlock("none");
             }
 
-            let [address, miner] = ["No miner info", "No miner info"]
-
-            if (blockInfo.transactions[0]?.payload) {
-                [address, miner] = parsePayload(blockInfo.transactions[0].payload);
-            }
-
+           const address = blockInfo.extra?.minerAddress || "No miner info"
+           const miner = blockInfo.extra?.minerInfo || "No miner info"
 
             // request TX input addresses
             const txToQuery = blockInfo.transactions.flatMap((tx) => tx.inputs?.flatMap(txInput => txInput.previousOutpoint.transactionId)).filter(x => x).concat(
@@ -251,7 +247,7 @@ const BlockInfo = () => {
                                             <Col sm={12} md={12} lg={12}>
                                                 <div className="utxo-header">transaction id</div>
                                                 <div className="utxo-value-mono">
-                                                    <Link to={`/txs/${tx.verboseData.transactionId}`}
+                                                    <Link to={`/txs/${tx.verboseData.transactionId}?blockHash=${tx.verboseData.blockHash}`}
                                                           className="blockinfo-link">
                                                         {tx.verboseData.transactionId}
                                                     </Link>
