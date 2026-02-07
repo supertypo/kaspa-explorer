@@ -69,7 +69,7 @@ function Dashboard() {
                              className='d-flex flex-row justify-content-start text-light d-xs-none align-items-center'>
                             <img className="big-kaspa-icon" src="/k-icon-glow.png"/>
                             <div className="bigfont kas-badge">
-                                KASPA<br/>EXPLORER{SUFFIX}
+                                KASPA<br/>EXPLORER&nbsp;{SUFFIX}
                             </div>
                         </Col>
                     </Row>

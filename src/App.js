@@ -178,7 +178,7 @@ function App() {
                                                              height: "4rem"
                                                          }}/>
                                                     <div
-                                                        className="navbar-brand-text text-start">KASPA<br/>EXPLORER{SUFFIX}
+                                                        className="navbar-brand-text text-start">KASPA<br/>EXPLORER&nbsp;{SUFFIX}
                                                     </div>
                                                 </div>
                                             </Link>
