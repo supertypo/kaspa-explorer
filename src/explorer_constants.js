@@ -4,7 +4,7 @@ let API_SERVER = process.env.REACT_APP_API_SERVER || ""
 let ADDRESS_PREFIX = "kaspa:"
 let KASPA_UNIT = "KAS"
 
-let BPS = 1
+let BPS = 10
 
 
 switch (process.env.REACT_APP_NETWORK) {
@@ -25,7 +25,6 @@ switch (process.env.REACT_APP_NETWORK) {
         }
         SUFFIX = " TN11"
         KASPA_UNIT = "TKAS"
-        BPS = 10
         break;
 
     // mainnet
