@@ -5,5 +5,5 @@ window.__RUNTIME_CONFIG__ = {
   ADDRESS_PREFIX: "kaspa:",
   KASPA_UNIT: "KAS",
   BPS: 10,
-  SUFFIX: "LOCAL"
+  SUFFIX: "DEV"
 };

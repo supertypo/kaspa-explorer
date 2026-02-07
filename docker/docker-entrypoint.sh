@@ -6,7 +6,7 @@ API_SERVER="${API_SERVER:-https://api.kaspa.org}"
 SOCKET_SERVER="${SOCKET_SERVER:-wss://api.kaspa.org}"
 ADDRESS_PREFIX="${ADDRESS_PREFIX:-kaspa:}"
 KASPA_UNIT="${KASPA_UNIT:-KAS}"
-SUFFIX="${SUFFIX:-LOCAL}"
+SUFFIX="${SUFFIX:-DEV}"
 BPS="${BPS:-10}"
 
 CONFIG_FILE="/app/build/config.js"
