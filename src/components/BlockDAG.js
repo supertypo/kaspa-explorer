@@ -4,7 +4,7 @@ import moment from "moment";
 import {useContext, useEffect, useState} from "react";
 import {getBlockdagInfo, getFeeEstimate, getHashrate, getHashrateMax, getKaspadInfo} from '../kaspa-api-client';
 import {numberWithCommas} from "../helper";
-import {BPS, KASPA_UNIT} from "../explorer_constants";
+import {KASPA_UNIT} from "../explorer_constants";
 import MempoolContext from "./MempoolContext";
 
 

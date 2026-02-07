@@ -7,7 +7,6 @@ SOCKET_SERVER="${SOCKET_SERVER:-wss://api.kaspa.org}"
 ADDRESS_PREFIX="${ADDRESS_PREFIX:-kaspa:}"
 KASPA_UNIT="${KASPA_UNIT:-KAS}"
 SUFFIX="${SUFFIX:-DEV}"
-BPS="${BPS:-10}"
 
 CONFIG_FILE="/app/build/config.js"
 
@@ -25,8 +24,7 @@ window.__RUNTIME_CONFIG__ = {
   SOCKET_SERVER: "$SOCKET_SERVER",
   ADDRESS_PREFIX: "$ADDRESS_PREFIX",
   KASPA_UNIT: "$KASPA_UNIT",
-  SUFFIX: "$SUFFIX",
-  BPS: $BPS
+  SUFFIX: "$SUFFIX"
 };
 EOF
     
@@ -36,7 +34,6 @@ EOF
     echo "  ADDRESS_PREFIX: $ADDRESS_PREFIX"
     echo "  KASPA_UNIT: $KASPA_UNIT"
     echo "  SUFFIX: $SUFFIX"
-    echo "  BPS: $BPS"
     
     touch /tmp/.CONFIG_REPLACED
   else
